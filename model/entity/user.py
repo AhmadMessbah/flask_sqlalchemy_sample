@@ -14,6 +14,8 @@ class User(Base):
     password = Column(String(20))
 
     posts = relationship("Post", back_populates="user")
+    comments = relationship("Comment", back_populates="user")
+    likes = relationship("Like", back_populates="user")
 
     def __init__(self,name,family,username,password):
         self.name = name

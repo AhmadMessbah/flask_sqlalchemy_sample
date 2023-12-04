@@ -22,17 +22,21 @@ user1.name = "fan"
 
 comment1 = Comment()
 comment1.text = "comment1"
+comment1.user = user
 post.comments.append(comment1)
 
 comment2 = Comment()
 comment2.text = "comment2"
+comment2.user=user1
 post.comments.append(comment2)
 
 like1 = Like()
 like1.post = post
+like1.user = user1
 
 like2 = Like()
 like2.post = post
+like2.user=user1
 
 em = DatabaseManager()
 em.make_engine()

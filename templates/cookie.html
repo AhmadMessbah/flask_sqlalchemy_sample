@@ -1,0 +1,19 @@
+{% extends "template.html" %}
+
+{% block title %}
+index
+{% endblock %}
+
+{% block links %}
+{% endblock %}
+
+{% block content %}
+    <h1 style="color: {{ color }}">{{ username }}</h1>
+    <form action="">
+        <input type="text" name="username" value="{{ username }}">
+        <input type="password" name="password" value="{{ password }}">
+    </form>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

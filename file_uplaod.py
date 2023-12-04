@@ -17,29 +17,6 @@ app.config["SESSION_TYPE"] = "filesystem"
 
 Session(app)
 
-@app.route("/")
-def home():
-    session["username"] = "ahmad_user"
-    return render_template("index.html")
-
-
-@app.route("/login", methods=["GET", "POST"])
-def login():
-    print(request.cookies.get("username"))
-    if request.method == "POST":
-        print(request.form.get("username"))
-        print(request.form.get("password"))
-        print(request.form.get("remember"))
-
-        response = make_response(render_template("login.html"))
-        response.set_cookie("username", value=request.form.get("username"))
-        response.set_cookie("password", value=request.form.get("password"))
-
-        return response
-
-    return render_template("login.html",prediction="", show_predictions_modal=True)
-
-
 @app.route("/user", methods=["GET", "POST"])
 def user():
     print(session.get("user"))
@@ -56,14 +33,6 @@ def user():
             file.save(UPLOAD_FOLDER + file.filename)
 
     return render_template("user.html", user=user)
-
-
-@app.route("/user/<int:id>/")
-def user_id(id):
-    user = UserService.find_by_id(id)
-    if user:
-        return user.json()
-    return "", 204
 
 
 if __name__ == "__main__":
